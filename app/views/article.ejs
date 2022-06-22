@@ -1,0 +1,106 @@
+<%- include('./partials/header') %>
+
+  <%- include('./partials/navigation') %>
+
+    <!-- Page Content -->
+    <div class="container container-main">
+
+      <div class="row">
+
+          <div class="col-lg-9">
+
+            <div class="row">
+              <div class="col-lg-6">
+                <img class="" src="/images/<%= jewel.image %>.jpg" alt="">
+              </div>
+
+              <div class="col-lg-6">
+                <div class="card">
+                  <div class="card-body">
+                    <h3 class="card-title">
+                      <%= jewel.name %>
+                      <div class="badge badge-pill badge-<%= jewel.category.toLowerCase() %>"><%= jewel.category %></div>
+                    </h3>
+                    <p class="card-text">Dimension: <%= jewel.dimension %>cm</p>
+                    <p class="card-text"><%= jewel.description %></p>
+                    
+                    <% let grade = 0; %>
+                    <% reviews.forEach(review => grade += review.note); %>
+                    <% grade = Math.round(grade/reviews.length) %>
+                  
+                    <% console.log(locals.currentPage) %>
+
+                    <p class="card-text">
+                      
+                      <% for (let i = 0; i < grade; i++) { %>
+                        &#9733;
+                      <% } %>
+    
+                      <% for (let i = grade; i < 5; i++) { %>
+                        &#9734;
+                      <% } %>
+                      
+                      (<%=grade%>)
+                      
+                      <br> 
+                     
+                     
+                      <a href="#" data-toggle="modal" data-target="#reviewsModal">Détails des avis</a>
+                    </p>
+                    <h5><%= jewel.price %></h5>
+                    <p class="card-text">
+                      <a href="/favoris/add/<%= jewel.name.toLowerCase()%>" class="link-add-bookmarks">+ Ajouter aux favoris</a>
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+            <!-- /.row -->
+
+          </div>
+          <!-- /.col-lg-9 -->
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Modale des avis -->
+    <div class="modal fade" id="reviewsModal" tabindex="-1" role="dialog" aria-labelledby="reviewsModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="reviewsModalLabel">Avis des internautes</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+    <% for (review of reviews) { %>
+
+
+            <section>
+              <h5><%=review.title%> &nbsp; <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+              </h5>
+              <p class="review-author">par <%= review.author %></p>
+              <p><%= review.message %></p>
+            </section>
+
+            <hr>
+
+  <% }; %>
+  
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+</div>
+</div>
+</div>
+</div>
+
+    <%- include('./partials/footer') %>
