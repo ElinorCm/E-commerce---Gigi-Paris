@@ -6,22 +6,110 @@
 html {
   --primaryColor: black;
   --lightColor: white;
-  --font-family: 'Alata', sans-serif;
-}
-
-* {
-  font-family: var(--font-family) !important;
+  --fontColor: grey;
+  --fontfamily: 'Alata', sans-serif;
+  --extrasmall-gutter: 0.6rem;
+  --small-gutter: 1rem; 
+  --medium-gutter: 1.8rem;
+  --large-gutter: 3.6rem; 
+  --fontsize-extrasmall: 0.7rem;
+  --fontsize-small: 0.9rem;
+  --fontsize-medium: 1.8rem;
 }
 
 body {
-  padding-top: 65px;
+  font-family: var(--fontfamily);
 }
 
-.container-nav {
-  margin-right: 0px;
-  margin-left: 0px;
-  width: 100vw;
+.nav {
+  background: var(--lightColor);
+  display : flex; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--small-gutter);
 }
+
+.nav-link {
+  display: flex;
+}
+
+.nav-item {
+  margin-right: var(--small-gutter); 
+  margin-left: var(--small-gutter);
+}
+
+.nav-item-link {
+  font-size: var(--fontsize-small);
+}
+
+.home-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--large-gutter);
+}
+
+.home-container {
+  width: 80vw;
+  margin: 0 auto; 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.home-title {
+  font-size: var(--fontsize-medium);
+  margin-bottom: var(--small-gutter);
+}
+
+.home-description {
+  font-size: var(--fontsize-small);
+  width: 28vw;
+  line-height: var(--medium-gutter);
+}
+
+.card {
+  margin: var(--small-gutter);
+}
+
+.card-main > * {
+  margin-bottom: var(--extrasmall-gutter);
+}
+
+.card-img {
+  width: 20vw;
+  min-width: 180px;
+  margin-bottom: var(--extrasmall-gutter);
+}
+
+.card-main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.card-title {
+  margin-right: var(--extrasmall-gutter);
+  font-size: var(--fontsize-small);
+}
+
+.card-price {
+  font-size: var(--fontsize-extrasmall);
+  color: var(--fontColor);
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  font-size: var(--fontsize-small);
+  padding: var(--small-gutter);
+}
+
+
+
+/*** old***/
 
 .navbar {
   background-color: var(--lightColor);
