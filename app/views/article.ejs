@@ -3,67 +3,70 @@
   <%- include('./partials/navigation') %>
 
     <!-- Page Content -->
-    <div class="container container-main">
+    <div class="container container-article">
 
-      <div class="row">
+      <img class="article-img" src="/images/<%= jewel.image %>.jpg" alt="">
 
-          <div class="col-lg-9">
 
-            <div class="row">
-              <div class="col-lg-6">
-                <img class="" src="/images/<%= jewel.image %>.jpg" alt="">
-              </div>
+      <div class="article-body">
 
-              <div class="col-lg-6">
-                <div class="card">
-                  <div class="card-body">
-                    <h3 class="card-title">
-                      <%= jewel.name %>
-                      <div class="badge badge-pill badge-<%= jewel.category.toLowerCase() %>"><%= jewel.category %></div>
-                    </h3>
-                    <p class="card-text">Dimension: <%= jewel.dimension %>cm</p>
-                    <p class="card-text"><%= jewel.description %></p>
-                    
-                    <% let grade = 0; %>
-                    <% reviews.forEach(review => grade += review.note); %>
-                    <% grade = Math.round(grade/reviews.length) %>
-                  
-                    <% console.log(locals.currentPage) %>
+        <h5 class="article-body-price">
+          <%= jewel.price %> €
+        </h5>
 
-                    <p class="card-text">
-                      
-                      <% for (let i = 0; i < grade; i++) { %>
-                        &#9733;
+        <div class="article-body-main">
+          <h3 class="article-body-main-name">
+            <%= jewel.name %>
+          </h3>
+          <a href="/favoris/add/<%= jewel.name.toLowerCase()%>" class="article-body-main-favorite">&#x2661;</a>
+        </div>
+        
+
+        <button class="article-body-cart-btn">AJOUTER AU PANIER</button>
+        <p class="article-body-desc">
+          <%= jewel.description %>
+        </p>
+
+        <% let grade=0; %>
+          <% reviews.forEach(review=> grade += review.note); %>
+            <% grade=Math.round(grade/reviews.length) %>
+
+
+              <p class="article-body-grade">
+
+                <% for (let i=0; i < grade; i++) { %>
+                  &#9733;
+                  <% } %>
+
+                    <% for (let i=grade; i < 5; i++) { %>
+                      &#9734;
                       <% } %>
-    
-                      <% for (let i = grade; i < 5; i++) { %>
-                        &#9734;
-                      <% } %>
-                      
-                      (<%=grade%>)
-                      
-                      <br> 
-                     
-                     
-                      <a href="#" data-toggle="modal" data-target="#reviewsModal">Détails des avis</a>
-                    </p>
-                    <h5><%= jewel.price %></h5>
-                    <p class="card-text">
-                      <a href="/favoris/add/<%= jewel.name.toLowerCase()%>" class="link-add-bookmarks">+ Ajouter aux favoris</a>
-                    </p>
-                  </div>
-                </div>
 
-              </div>
+                        (<%=grade%>)
 
-            </div>
-            <!-- /.row -->
+                          <br>
 
-          </div>
-          <!-- /.col-lg-9 -->
+                          <a href="#" data-toggle="modal" data-target="#reviewsModal">Détails des avis</a>
+              </p>
+
+
+
+
+
 
       </div>
-      <!-- /.row -->
+
+
+
+
+    </div>
+    <!-- /.row -->
+
+    </div>
+    <!-- /.col-lg-9 -->
+
+    </div>
+    <!-- /.row -->
 
     </div>
     <!-- /.container -->
@@ -81,26 +84,30 @@
           </div>
           <div class="modal-body">
 
-    <% for (review of reviews) { %>
+            <% for (review of reviews) { %>
 
 
-            <section>
-              <h5><%=review.title%> &nbsp; <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-              </h5>
-              <p class="review-author">par <%= review.author %></p>
-              <p><%= review.message %></p>
-            </section>
+              <section>
+                <h5>
+                  <%=review.title%> &nbsp; <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                </h5>
+                <p class="review-author">par <%= review.author %>
+                </p>
+                <p>
+                  <%= review.message %>
+                </p>
+              </section>
 
-            <hr>
+              <hr>
 
-  <% }; %>
-  
-</div>
-<div class="modal-footer">
-  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-</div>
-</div>
-</div>
-</div>
+              <% }; %>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <%- include('./partials/footer') %>

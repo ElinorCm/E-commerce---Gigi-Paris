@@ -100,6 +100,51 @@ body {
   color: var(--fontColor);
 }
 
+/***** articles *****/
+
+.container-article {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--large-gutter);
+}
+
+.article-img {
+  width: 30vw; 
+  height: 30vw;
+}
+
+.article-body {
+  height: 30vw;
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  margin: var(--medium-gutter);
+}
+
+.article-body > * {
+  margin-bottom: var(--medium-gutter);
+}
+
+.article-body-main {
+  display:flex;
+  flex-direction: row;
+}
+
+
+.article-body-main-favorite {
+  display: block;
+  width: 3vw;
+  margin-left: var(--small-gutter);
+}
+
+.article-body-price {
+  font-size: var(--fontsize-small);
+  color: var(--fontColor);
+}
+
+
+/***** footer *****/
+
 .footer {
   display: flex;
   justify-content: center;
