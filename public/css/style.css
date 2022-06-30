@@ -83,10 +83,31 @@ body {
   margin-bottom: var(--extrasmall-gutter);
 }
 
+.card-img-container {
+  position: relative;
+}
+
 .card-img {
   width: 20vw;
   min-width: 180px;
   margin-bottom: var(--extrasmall-gutter);
+  transition: opacity 0.5s; 
+}
+
+.card-img-bis:hover {
+  opacity: 0; 
+}
+
+.card-img-bis {
+  position:absolute;
+  top: 0rem; 
+  left: 0rem; 
+  opacity: 0;
+  transition: opacity 0.5s; 
+}
+
+.card-img-bis:hover {
+  opacity: 1; 
 }
 
 .card-main {

@@ -20,6 +20,9 @@
   <div class="container home-container">
     <% for (jewel of jewels) { %>
     <div class="card">
+
+      <div class="card-img-container">
+
       <a href="/article/<%= jewel.image.toLowerCase() %>">
         <img
           class="card-img"
@@ -27,6 +30,17 @@
           alt="jewel"
         />
       </a>
+
+      <a href="/article/<%= jewel.image.toLowerCase() %>">
+        <img
+          class="card-img card-img-bis"
+          src="./images/<%= jewel.image %>2.jpg"
+          alt="jewel"
+        />
+      </a>
+
+    </div>
+
       <div class="card-main">
         <small class="card-footer-star"
           >&#9733; &#9733; &#9733; &#9733; &#9734;</small
