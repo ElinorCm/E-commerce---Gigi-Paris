@@ -3,65 +3,35 @@
   <%- include('./partials/navigation') %>
 
     <!-- Page Content -->
-    <div class="container container-main">
+    <div class="container favoris-container">
 
-      <div class="row">
-        <div class="col">
-          <h3 class="text-center">Votre liste de préférences</h3>
+          <h1 class="favoris-title">Wishlist</h1>
 
-          <% if (!locals.jewels) { %>
-            <p>Vous n'avez pas encore ajouté de favoris</p>
+          <% if (!locals.jewels || locals.jewels.length === 0) { %>
+            <p class="favoris-empty-content">Votre wishlist est vide.</p>
             <% } else { %>
 
-              <table class="table">
-                <thead>
-                  <th>
-                    <th>Article</th>
-                    <th>Prix HT</th>
-                  <th></th>
-                </thead>
-                <tbody>
+              <div class="favoris-card-container">
 
+                <% for (jewel of jewels) { %>
 
-                  <% for (jewel of jewels) { %>
+                    <div class="favoris-card">
+                        <img class="favoris-card-img" src="./images/<%= jewel.image %>.jpg" alt="">
+                        <h5 class="favoris-card-title"><%= jewel.name %></h5>
+                        <p class="favoris-card-price"><%= jewel.price%> €</p>
+                        <a class="favoris-card-btn" href="/favoris/delete/<%= jewel.name.toLowerCase() %>">
+                          <i data-feather="x" width="20" stroke-width="1.5"></i>
+                        </a>
+                    </div>  
 
-                    <tr>
-                      <td>
-                        <img class="img-thumbnail img-cart-list" src="./images/<%= jewel.image %>.jpg" alt="">
-                        <div class="item-description">
-                          <h5 class="item-title">
-                            <%= jewel.name %>
-                          </h5>
-                        </div>
-                      </td>
+                <% } %>
+                  
+              </div>
 
-                      <td>
-                        <p class="item-subtotal">
-                          <%= jewel.price%>
-                        </p>
-                      </td>
+            <% } %>
 
-                      <td>
-                        <a href="/favoris/delete/<%= jewel.name.toLowerCase() %>">Enlever de la liste</a>
-                      </td>
-                    </tr>
+      <a class="favoris-btn" href="/">Retour à l'accueil</a>
 
-                    <% } %>
-                </tbody>
-              </table>
-
-              <% } %>
-
-                <div class="row">
-                  <div class="col text-right">
-                    <a class="btn btn-success" href="/">
-                      Retour à l'accueil
-                    </a>
-                  </div>
-                </div>
-
-        </div>
-      </div>
     </div>
 
     <%- include('./partials/footer') %>

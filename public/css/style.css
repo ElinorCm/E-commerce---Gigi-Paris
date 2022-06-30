@@ -7,6 +7,7 @@ html {
   --primaryColor: black;
   --lightColor: white;
   --fontColor: grey;
+  --btnColor: #E7E7E7; 
   --fontfamily: 'Alata', sans-serif;
   --extrasmall-gutter: 0.6rem;
   --small-gutter: 1rem; 
@@ -20,6 +21,8 @@ html {
 body {
   font-family: var(--fontfamily);
 }
+
+/***** nav *****/
 
 .nav {
   background: var(--lightColor);
@@ -42,6 +45,8 @@ body {
 .nav-item-link {
   font-size: var(--fontsize-small);
 }
+
+/***** home *****/
 
 .home-header {
   display: flex;
@@ -128,8 +133,8 @@ body {
 .article-body-main {
   display:flex;
   flex-direction: row;
+  font-size: var(--fontsize-medium);
 }
-
 
 .article-body-main-favorite {
   display: block;
@@ -137,11 +142,76 @@ body {
   margin-left: var(--small-gutter);
 }
 
+.article-body-cart-btn {
+  width: 100%;
+  background-color: var(--primaryColor);
+  color: var(--lightColor); 
+  border: none;
+  padding: var(--small-gutter);
+}
+
+.article-body-desc {
+  color: var(--fontColor);
+  font-size: var(--fontsize-small);
+  line-height: var(--medium-gutter);
+}
+
 .article-body-price {
   font-size: var(--fontsize-small);
   color: var(--fontColor);
 }
 
+.article-body-grade-text {
+  font-size: var(--fontsize-extrasmall);
+  border-bottom: 1px solid var(--primaryColor);
+}
+
+.article-reviews {
+  width: 50%;
+  margin: var(--medium-gutter) auto;
+}
+
+.article-reviews-title {
+  text-align: center;
+  font-size: var(--fontsize-medium);
+  padding-bottom: var(--medium-gutter);
+}
+
+.article-reviews-grade {
+  text-align: center;
+  border-bottom: solid black 3px;
+  padding-bottom: var(--medium-gutter);
+}
+
+.article-reviews-grade-text {
+  font-size: var(--fontsize-extrasmall);
+}
+
+.article-reviews-content {
+  margin-top: var(--medium-gutter);
+}
+
+.article-reviews-content-msg {
+  margin-bottom: var(--small-gutter);
+  color: var(--fontColor);
+  font-size: var(--fontsize-small);
+  line-height: var(--medium-gutter);
+}
+
+.article-reviews-author {
+  margin-bottom: var(--small-gutter);
+  color: var(--fontColor);
+  font-size: var(--fontsize-small);
+}
+
+.article-reviews-content-title {
+  font-weight: bold;
+  margin-bottom: var(--medium-gutter);
+}
+
+.article-reviews-content-title-stars {
+  margin-right: var(--small-gutter);
+}; 
 
 /***** footer *****/
 
@@ -149,10 +219,86 @@ body {
   display: flex;
   justify-content: center;
   font-size: var(--fontsize-small);
-  padding: var(--small-gutter);
 }
 
+.footer-text {
+  text-align: center;
+  padding: var(--small-gutter);
+  margin: var(--small-gutter);
+}
 
+/***** wishlist *****/
+
+.favoris-container {
+  width: 80vw;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.favoris-title {
+  font-size: var(--fontsize-medium);
+  margin: var(--large-gutter);
+}
+
+.favoris-btn {
+  margin: var(--large-gutter);
+  width: 20vw;
+  background-color: var(--primaryColor);
+  color: var(--lightColor); 
+  border: none;
+  padding: var(--small-gutter);
+  text-align: center;
+}
+
+.favoris-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.favoris-card {
+  position: relative;
+  margin: var(--small-gutter);
+}
+
+.favoris-card-img {
+  width: 20vw;
+  margin-bottom: var(--extrasmall-gutter);
+}
+
+.favoris-card-title {
+  margin-right: var(--extrasmall-gutter);
+  font-size: var(--fontsize-small);
+  margin-bottom: var(--extrasmall-gutter);
+}
+
+.favoris-card-price {
+  font-size: var(--fontsize-extrasmall);
+  color: var(--fontColor);
+  margin-bottom: var(--extrasmall-gutter);
+}
+
+.favoris-card-btn {
+  border-radius: 50%;
+  background-color: var(--btnColor);
+  font-size: var(--fontsize-small);
+  transition: background-color 0.25s;
+  position: absolute;
+  top: var(--extrasmall-gutter);
+  right: var(--extrasmall-gutter);
+  width: var(--medium-gutter);
+  height: var(--medium-gutter);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.favoris-card-btn:hover {
+  background-color: var(--primaryColor);
+  color: var(--lightColor); 
+}
 
 /*** old***/
 
@@ -214,7 +360,7 @@ body {
 
 .badge-mechant {
   background-color: red;
-  color: var(--lightColor);white;
+  color: var(--lightColor);
 }
 
 .badge-animal {
@@ -262,12 +408,4 @@ table.table tbody tr td {
 
 .link-add-bookmarks {
   float:left;
-}
-
-/* Modal breakpoint is awful in bootstrap */
-@media (min-width: 576px) {
-  .modal-dialog {
-    width: 80%;
-    max-width: unset;
-  }
 }

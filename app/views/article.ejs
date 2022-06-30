@@ -2,11 +2,9 @@
 
   <%- include('./partials/navigation') %>
 
-    <!-- Page Content -->
     <div class="container container-article">
 
       <img class="article-img" src="/images/<%= jewel.image %>.jpg" alt="">
-
 
       <div class="article-body">
 
@@ -21,93 +19,64 @@
           <a href="/favoris/add/<%= jewel.name.toLowerCase()%>" class="article-body-main-favorite">&#x2661;</a>
         </div>
         
+        <% let grade=0; %>
+        <% reviews.forEach(review=> grade += review.note); %>
+        <% grade=Math.round(grade/reviews.length) %>
+
+            <p class="article-body-grade">
+
+              <% for (let i=0; i < grade; i++) { %>
+                &#9733;
+                <% } %>
+
+                  <% for (let i=grade; i < 5; i++) { %>
+                    &#9734;
+                    <% } %>
+                    <span class="article-body-grade-text">
+                      <%=grade%> (<%= reviews.length %> AVIS)
+                    </span>
+            </p>
 
         <button class="article-body-cart-btn">AJOUTER AU PANIER</button>
         <p class="article-body-desc">
           <%= jewel.description %>
         </p>
 
-        <% let grade=0; %>
-          <% reviews.forEach(review=> grade += review.note); %>
-            <% grade=Math.round(grade/reviews.length) %>
+      </div>
 
+    </div>
 
-              <p class="article-body-grade">
+    <div class="article-reviews">
 
-                <% for (let i=0; i < grade; i++) { %>
-                  &#9733;
-                  <% } %>
+      <h4 class="article-reviews-title">Nos clientes partagent leur avis</h4>
 
-                    <% for (let i=grade; i < 5; i++) { %>
-                      &#9734;
-                      <% } %>
+      <p class="article-reviews-grade">
+        <% for (let i=0; i < grade; i++) { %>
+          &#9733;
+          <% } %>
 
-                        (<%=grade%>)
+            <% for (let i=grade; i < 5; i++) { %>
+              &#9734;
+              <% } %>
+              <span class="article-reviews-grade-text">
+                <%=grade%> (<%= reviews.length %> AVIS)
+              </span>
+      </p>
 
-                          <br>
+      <div class="article-reviews-content">
 
-                          <a href="#" data-toggle="modal" data-target="#reviewsModal">Détails des avis</a>
-              </p>
-
-
-
-
-
+        <% for (review of reviews) { %>
+          <section>
+            <h5 class="article-reviews-content-title">
+              <small class="article-reviews-content-title-stars">&#9733; &#9733; &#9733; &#9733; &#9734;</small> <%=review.title%> &nbsp; 
+            </h5>
+            <p class="article-reviews-content-msg"><%= review.message %></p>
+            <p class="article-reviews-author"><%= review.author.toUpperCase() %></p>
+          </section>
+        <% }; %>
 
       </div>
 
-
-
-
-    </div>
-    <!-- /.row -->
-
-    </div>
-    <!-- /.col-lg-9 -->
-
-    </div>
-    <!-- /.row -->
-
-    </div>
-    <!-- /.container -->
-
-    <!-- Modale des avis -->
-    <div class="modal fade" id="reviewsModal" tabindex="-1" role="dialog" aria-labelledby="reviewsModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h3 class="modal-title" id="reviewsModalLabel">Avis des internautes</h3>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-
-            <% for (review of reviews) { %>
-
-
-              <section>
-                <h5>
-                  <%=review.title%> &nbsp; <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                </h5>
-                <p class="review-author">par <%= review.author %>
-                </p>
-                <p>
-                  <%= review.message %>
-                </p>
-              </section>
-
-              <hr>
-
-              <% }; %>
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-          </div>
-        </div>
-      </div>
     </div>
 
-    <%- include('./partials/footer') %>
+<%- include('./partials/footer') %>
