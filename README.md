@@ -12,7 +12,7 @@ Avis et note par produit
 Ajout des bijoux en favoris
 
 
-## Fonctionnalités en cours d'ajustement
+## Fonctionnalités en cours de développement
 
 Rédaction d'avis 
 
